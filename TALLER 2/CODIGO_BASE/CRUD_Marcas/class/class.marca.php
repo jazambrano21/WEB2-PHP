@@ -245,6 +245,8 @@ class MARCA
 	{
 		$d_new = "new/0";
 		$d_new_final = base64_encode($d_new);
+		$d_menu = "menu";
+		$d_menu_final = base64_encode($d_menu);
 		$html = '
 		<div class="container mt-5">
 			<div class="card shadow-lg border-0 rounded-lg">
@@ -255,6 +257,9 @@ class MARCA
 					<div class="mb-3 text-center">
 						<a href="index.php?d=' . $d_new_final . '" class="btn btn-success">
 							<i class="fas fa-plus-circle"></i> Nuevo
+						</a>
+						<a href="../" class="btn btn-secondary">
+							<i class="fas fa-arrow-left"></i> Menú Principal
 						</a>
 					</div>
 					<div class="table-responsive">
