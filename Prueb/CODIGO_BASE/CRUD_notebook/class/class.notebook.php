@@ -1,6 +1,5 @@
 <?php
-class NOTEBOOK
-{
+class NOTEBOOK{
     private $idnotebook;
     private $precio;
     private $foto;
