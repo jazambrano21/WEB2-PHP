@@ -41,11 +41,11 @@ h2{
   position:absolute;
   left:50px;
   top:20px;
-  width: 1260px;
+  width: 1280px;
   height:170px;
   float: none;
   background:inherit;
-  background-color: rgba(0, 255, 255);
+  background-color: rgb(255, 255, 255);
   box-sizing:border-box;
   border-width:5px;
   border-style:solid;
@@ -59,14 +59,14 @@ h2{
   left:50px;
   top:200px;
   width:1260px;
-  height:70px;
+  height:80px;
   float: none;
   background:inherit;
   background-color: rgb(255, 255, 255);
   box-sizing:border-box;
   border-width:5px;
   border-style:solid;
-  border-color:rgba(121, 121, 121, 1);
+  border-color:rgb(255, 255, 255);
   border-radius:10px;
   padding-top: 10px;
 }
