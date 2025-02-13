@@ -1,6 +1,5 @@
 <?php
-class NOTEBOOK
-{
+class NOTEBOOK{
     private $idnotebook;
     private $precio;
     private $foto;
@@ -36,67 +35,37 @@ class NOTEBOOK
         }
     }
 
-    // Métodos auxiliares para manejar mensajes de éxito o error
-    private function _message_ok($accion)
-    {
-        return "<h3>Se ha $accion correctamente el registro.</h3>";
-    }
-
-    private function _message_error($accion)
-    {
-        return "<h3>Error $accion el registro.</h3>";
-    }
-}
-
 	public function save_notebook()
-	{
-		$this->precio = $_POST['precio'];
-		$this->Color_idColor = $_POST['Color_idColor'];
-		$this->Marca_idMarca = $_POST['Marca_idMarca'];
+    {
+        $this->precio = $_POST['precio'];
+        $this->Color_idColor = $_POST['Color_idColor'];
+        $this->Marca_idMarca = $_POST['Marca_idMarca'];
 
-		// Manejo de la imagen (foto)
-		if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {
-			$this->foto = $this->_get_name_file($_FILES['foto']['name'], 12);
-			$path = "../imagenes/notebooks/" . $this->foto;
+        // Manejo de la imagen (foto)
+        if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {
+            $this->foto = $this->_get_name_file($_FILES['foto']['name'], 12);
+            $path = "../../img/" . $this->foto;
 
-			if (!move_uploaded_file($_FILES['foto']['tmp_name'], $path)) {
-				echo $this->_message_error("Cargar la imagen");
-				exit;
-			}
-		} else {
-			$this->foto = NULL;
-		}
+            if (!move_uploaded_file($_FILES['foto']['tmp_name'], $path)) {
+                echo $this->_message_error("Cargar la imagen");
+                exit;
+            }
+        } else {
+            $this->foto = NULL;
+        }
 
-		$sql = "INSERT INTO notebook (precio, foto, Color_idColor, Marca_idMarca) 
-				VALUES ('$this->precio', 
-						" . ($this->foto ? "'$this->foto'" : "NULL") . ",
-						'$this->Color_idColor', 
-						'$this->Marca_idMarca')";
+        $sql = "INSERT INTO notebook (precio, foto, Color_idColor, Marca_idMarca) 
+                VALUES ('$this->precio', 
+                        " . ($this->foto ? "'$this->foto'" : "NULL") . ",
+                        '$this->Color_idColor', 
+                        '$this->Marca_idMarca')";
 
-		if ($this->con->query($sql)) {
-			echo $this->_message_ok("guardó");
-		} else {
-			echo $this->_message_error("guardar");
-		}
-	}
-
-	// Método auxiliar para generar un nombre único para el archivo subido
-	private function _get_name_file($original_name, $length)
-	{
-		$ext = pathinfo($original_name, PATHINFO_EXTENSION);
-		return substr(md5(time() . $original_name), 0, $length) . "." . $ext;
-	}
-
-	// Métodos auxiliares para manejar mensajes de éxito o error
-	private function _message_ok($accion)
-	{
-		return "<h3>Se ha $accion correctamente el registro.</h3>";
-	}
-
-	private function _message_error($accion)
-	{
-		return "<h3>Error al $accion el registro.</h3>";
-	}
+        if ($this->con->query($sql)) {
+            echo $this->_message_ok("guardó");
+        } else {
+            echo $this->_message_error("guardar");
+        }
+    }
 
 	//*********************** 3.3 METODO _get_name_File() **************************************************	
 	// Método auxiliar para generar un nombre único para el archivo subido
@@ -158,26 +127,26 @@ class NOTEBOOK
 
 
 	// Método para generar radio buttons con los colores disponibles en la BD
-private function _get_radio_colores($nombre, $defecto = null)
-{
-    $html = '<table border="0" align="left">';
+	private function _get_radio_colores($nombre, $defecto = null)
+	{
+		$html = '<table border="0" align="left">';
 
-    $sql = "SELECT idColor, descripcion FROM color;";
-    $res = $this->con->query($sql);
+		$sql = "SELECT idColor, descripcion FROM color;";
+		$res = $this->con->query($sql);
 
-    while ($row = $res->fetch_assoc()) {
-        $checked = ($defecto === null || $defecto == $row['idColor']) ? 'checked' : '';
+		while ($row = $res->fetch_assoc()) {
+			$checked = ($defecto === null || $defecto == $row['idColor']) ? 'checked' : '';
 
-        $html .= '
-        <tr>
-            <td>' . $row['descripcion'] . '</td>
-            <td><input type="radio" value="' . $row['idColor'] . '" name="' . $nombre . '" ' . $checked . '/></td>
-        </tr>';
-    }
+			$html .= '
+			<tr>
+				<td>' . $row['descripcion'] . '</td>
+				<td><input type="radio" value="' . $row['idColor'] . '" name="' . $nombre . '" ' . $checked . '/></td>
+			</tr>';
+		}
 
-    $html .= '</table>';
-    return $html;
-}
+		$html .= '</table>';
+		return $html;
+	}
 
 
 
@@ -324,7 +293,7 @@ private function _get_radio_colores($nombre, $defecto = null)
 				
 			// Mostrar la imagen si existe, o un placeholder si no
 			if (!empty($row['foto'])) {
-				$html .= '<img src="../../img' . $row['foto'] . '" alt="Notebook" width="50">';
+				$html .= '<img src="../../img/' . $row['foto'] . '" alt="Notebook" width="50">';
 			} else {
 				$html .= '<i class="fas fa-image fa-2x text-muted"></i>';
 			}
@@ -371,7 +340,7 @@ private function _get_radio_colores($nombre, $defecto = null)
 			echo $this->_message_error($mensaje);
 		} else {
 			$foto = !empty($row['foto']) 
-				? '<img src="../../img' . $row['foto'] . '" class="img-fluid img-thumbnail" width="300px"/>'
+				? '<img src="../../img/' . $row['foto'] . '" class="img-fluid img-thumbnail" width="300px"/>'
 				: '<i class="fas fa-image fa-5x text-muted"></i><br>Imagen no disponible';
 	
 			$html = '
@@ -434,7 +403,7 @@ private function _get_radio_colores($nombre, $defecto = null)
 		if ($this->con->query($sql_delete)) {
 			// Si hay una imagen asociada, eliminarla del servidor
 			if (!empty($foto) && file_exists("../imagenes/notebooks/" . $foto)) {
-				unlink("../../img" . $foto);
+				unlink("../../img/" . $foto);
 			}
 	
 			echo $this->_message_ok("ELIMINÓ");
@@ -481,5 +450,8 @@ private function _get_radio_colores($nombre, $defecto = null)
 		</div>';
 		return $html;
 	}
-//****************************************************************************	
-} // FIN SCRPIT
+
+}
+	
+//****************************************************************************	 // FIN SCRPIT
+?>
