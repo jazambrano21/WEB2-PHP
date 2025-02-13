@@ -245,8 +245,8 @@ public function get_form($id=NULL){
                     <div class="row g-3">
                         <!-- Placa -->
                         <div class="col-md-6">
-                            <label class="form-label"><i class="bi bi-key-fill"></i> Placa:</label>
-                            <input type="text" class="form-control border-0 shadow-sm" name="placa" value="' . $this->placa . '" required>
+                            <label class=" form-label"><i class="bi bi-key-fill"></i> Placa:</label>
+                            <input type="text" class="form-control border border-dark rounded shadow-sm" name="placa" value="' . $this->placa . '" required>
                         </div>
                         
                         <!-- Marca -->
@@ -258,13 +258,13 @@ public function get_form($id=NULL){
                         <!-- Motor -->
                         <div class="col-md-6">
                             <label class="form-label"><i class="bi bi-gear-fill"></i> Motor:</label>
-                            <input type="text" class="form-control border-0 shadow-sm" name="motor" value="' . $this->motor . '" required>
+                            <input type="text" class="form-control border border-dark rounded shadow-sm" name="motor" value="' . $this->motor . '" required>
                         </div>
 
                         <!-- Chasis -->
                         <div class="col-md-6">
                             <label class="form-label"><i class="bi bi-box-fill"></i> Chasis:</label>
-                            <input type="text" class="form-control border-0 shadow-sm" name="chasis" value="' . $this->chasis . '" required>
+                            <input type="text" class=" form-control border border-dark rounded shadow-sm" name="chasis" value="' . $this->chasis . '" required>
                         </div>
 
                         <!-- Combustible -->
@@ -290,13 +290,13 @@ public function get_form($id=NULL){
                         <!-- Foto -->
                         <div class="col-md-6">
                             <label class="form-label"><i class="bi bi-camera-fill"></i> Foto:</label>
-                            <input type="file" class="form-control border-0 shadow-sm" name="foto" ' . $flag . '>
+                            <input type="file" class="form-control border border-dark rounded shadow-sm" name="foto" ' . $flag . '>
                         </div>
 
                         <!-- Avalúo -->
                         <div class="col-md-12">
                             <label class="form-label"><i class="bi bi-cash-stack"></i> Avalúo ($):</label>
-                            <input type="number" class="form-control border-0 shadow-sm" name="avaluo" value="' . $this->avaluo . '" ' . $flag . ' required>
+                            <input type="number" class=" form-control border border-dark rounded shadow-sm" name="avaluo" value="' . $this->avaluo . '" ' . $flag . ' required>
                         </div>
                     </div>
 
