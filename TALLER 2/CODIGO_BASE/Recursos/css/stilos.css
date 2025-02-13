@@ -1,0 +1,29 @@
+.form-container {
+    max-width: 650px;
+    width: 100%; /* Asegura que el formulario no se salga del contenedor */
+    background-color: rgb(132, 132, 132);
+    padding: 2%; 
+    margin-top: 50px;
+    
+}
+.full-height-container {
+    justify-content: center; /* Centrado horizontal */
+    align-items: center; /* Centrado vertical */
+    padding: 20%; 
+    background-color: rgb(210, 208, 201);
+    height: 350px;
+}
+
+
+/* Color personalizado para el botón */
+.custom-btn {
+    background-color: rgb(238, 215, 99);
+    border-radius: 20px;
+}
+.logos{
+font-size: 20px;
+color: rgb(223, 223, 145);
+
+}
+
+
