@@ -43,12 +43,17 @@ input[type=submit]{
   border-radius: 20px;
   margin-bottom: 0;
 }
-
-input[tyoe=submit]:hover{
-  opacity: 1;
+.submit{
+  background: linear-gradient(#FFDA63, #FFB940);
+  border:0;
+  color: brown;
+  opacity: 0.8;
+  cursor: pointer;
+  border-radius: 20px;
+  margin-bottom: 0;
 }
 
-input[tyoe=submit]:active{
+input[type=submit]:active{
   transform: scale(0.95);
 }
 
